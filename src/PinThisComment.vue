@@ -34,7 +34,7 @@ export default {
 
       const { pageURL } = this.bus.config
       const successMsg = this.i18next.t('WfPinnedComment.' + (this.isPinned ? 'unpin_success' : 'pin_success'))
-      this.bus.db.ref(`plugins/WfPinnedComment/${pageURL}`).set(this.isPinned ? null : this.comment.commentId)
+      this.bus.db.ref(`plugins/WfPinnedComment/a/x/x/x/${pageURL}`).set(this.isPinned ? null : this.comment.commentId)
       .then(() => {
         this.$Message.success(successMsg)
       })
@@ -53,5 +53,3 @@ export default {
   }
 }
 </script>
-
-              

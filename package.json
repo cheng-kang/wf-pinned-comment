@@ -1,6 +1,6 @@
 {
   "name": "wildfire-pinned-comment",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A wildfire plugin that allows you to pin a comment at the top.",
   "author": "Kang Cheng <me@chengkang.pw>",
   "contributors": [],

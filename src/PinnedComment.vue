@@ -29,7 +29,7 @@ export default {
   },
   created () {
     const { pageURL } = this.bus.config
-    this.bus.db.ref(`plugins/WfPinnedComment/a/x/x/x/${pageURL}`).on('value', snap => {
+    this.bus.db.ref(`plugins/WfPinnedComment/a/x/x/x/u/${pageURL}`).on('value', snap => {
       const commentId = snap.val()
       if (!commentId) { this.comment = null; return }
       this.bus.db.ref(`comments/${commentId}`).once('value')

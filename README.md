@@ -1,4 +1,4 @@
-# wildfire-pinned-comment [![](https://img.shields.io/npm/v/wildfire-pinned-comment.svg?style=flat-square)](https://www.npmjs.com/wildfire-pinned-comment)
+# wf-pinned-comment [![](https://img.shields.io/npm/v/wildfire-pinned-comment.svg?style=flat-square)](https://www.npmjs.com/wildfire-pinned-comment)
 
 A wildfire plugin that allows you to pin a comment at the top.
 

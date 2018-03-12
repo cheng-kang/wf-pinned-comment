@@ -1,17 +1,17 @@
 {
-  "name": "wildfire-pinned-comment",
-  "version": "1.0.2",
+  "name": "wf-pinned-comment",
+  "version": "0.0.1",
   "description": "A wildfire plugin that allows you to pin a comment at the top.",
   "author": "Kang Cheng <me@chengkang.pw>",
-  "contributors": [],
   "files": [
     "dist",
-    "src"
+    "src",
+    "meta.json"
   ],
-  "main": "./dist/wildfire-pinned-comment.min.js",
+  "main": "./dist/wf-pinned-comment.min.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/wildfirejs/wildfire-plugin-template.git"
+    "url": "git://github.com/cheng-kang/wf-pinned-comment.git"
   },
   "scripts": {
     "dev": "node example/dev/dev-server.js",

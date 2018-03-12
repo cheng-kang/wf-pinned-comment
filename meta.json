@@ -1,0 +1,36 @@
+{
+  "title": "Pinned Comment",
+  "module": "WfPinnedComment",
+  "version": "0.0.1",
+  "description": "A wildfire plugin that allows you to pin a comment at the top.\n[Home Page](https://github.com/cheng-kang/wf-pinned-comment)",
+  "options": [
+    {
+      "key": "backgroundColor",
+      "displayName": "bg_color",
+      "placeholder": "bg_color_placeholder",
+      "validate": "/#[0-9A-Fa-f]{6}/g"
+    }
+  ],
+  "translation": {
+    "en": {
+      "bg_color": "Background Color",
+      "bg_color_placeholder": "e.g. #ffffff",
+      "error": "Something went wrong.",
+      "pin": "Pin",
+      "pinned_comment": "Pinned Comment",
+      "pin_success": "Pinned!",
+      "unpin": "Unpin",
+      "unpin_success": "Unpinned!"
+    },
+    "zh-CN": {
+      "bg_color": "背景颜色",
+      "bg_color_placeholder": "例：#ffffff",
+      "error": "置顶操作出错了。",
+      "pin": "置顶",
+      "pinned_comment": "置顶评论",
+      "pin_success": "置顶成功！",
+      "unpin": "取消置顶",
+      "unpin_success": "取消置顶成功！"
+    }
+  }
+}

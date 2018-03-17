@@ -1,14 +1,12 @@
 {
   "name": "wf-pinned-comment",
-  "version": "0.0.1",
+  "version": "0.0.6",
   "description": "A wildfire plugin that allows you to pin a comment at the top.",
   "author": "Kang Cheng <me@chengkang.pw>",
   "files": [
-    "dist",
-    "src",
-    "meta.json"
+    "dist"
   ],
-  "main": "./dist/wf-pinned-comment.min.js",
+  "main": "./dist/package.min.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/cheng-kang/wf-pinned-comment.git"
@@ -16,7 +14,7 @@
   "scripts": {
     "dev": "node example/dev/dev-server.js",
     "lint": "eslint --ext .js,.vue src",
-    "build": "cross-var cross-env PACKAGE_NAME=$npm_package_name node build/build.js"
+    "build": "cross-var cross-env PACKAGE_NAME=$npm_package_name PACKAGE_VERSION=$npm_package_version node build/build.js"
   },
   "dependencies": {
     "firebase": "^4.8.1",
@@ -40,15 +38,14 @@
     "cross-env": "^5.1.3",
     "cross-var": "^1.1.0",
     "css-loader": "^0.28.0",
-    "eslint": "^3.19.0",
-    "eslint-config-standard": "^10.2.1",
+    "eslint": "^4.19.0",
+    "eslint-config-airbnb-base": "^12.1.0",
     "eslint-friendly-formatter": "^3.0.0",
     "eslint-loader": "^1.7.1",
     "eslint-plugin-html": "^3.0.0",
-    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-node": "^5.2.0",
     "eslint-plugin-promise": "^3.4.0",
-    "eslint-plugin-standard": "^3.0.1",
     "eventsource-polyfill": "^0.9.6",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^1.1.4",

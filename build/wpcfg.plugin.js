@@ -5,9 +5,12 @@ const webpack = require('webpack')
 const config = require('./config').build
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const env = config.env
 const PACKAGE_NAME = process.env.PACKAGE_NAME
+const PACKAGE_VERSION = process.env.PACKAGE_VERSION
+const LIBRARY_NAME = PACKAGE_NAME.toLowerCase().split('-').map(part => (part.charAt(0).toUpperCase() + part.slice(1))).reduce((acc, cur) => acc + cur, '')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -19,8 +22,8 @@ let webpackConfig = {
   },
   output: {
     path: config.assetsRoot,
-    filename: `${PACKAGE_NAME}.min.js`,
-    library: 'WfPinnedComment',
+    filename: 'package.min.js',
+    library: LIBRARY_NAME,
     libraryTarget: 'umd',
     umdNamedDefine: true
   },
@@ -91,6 +94,17 @@ let webpackConfig = {
     new webpack.DefinePlugin({
       'process.env': env
     }),
+    new CopyWebpackPlugin([
+      {
+        from: './meta.json',
+        to: './meta.json',
+        transform (content, path) {
+          const contentJSON = JSON.parse(content.toString())
+          const enhancedContentJSON = Object.assign({ library: LIBRARY_NAME, version: PACKAGE_VERSION }, JSON.parse(content.toString()))
+          return new Buffer(JSON.stringify(enhancedContentJSON, null, 2))
+        },
+      }
+    ]),
     new UglifyJsPlugin({
       uglifyOptions: {
         ie8: false,
@@ -114,7 +128,7 @@ let webpackConfig = {
       }
     }),
     // keep module.id stable when vender modules does not change
-    new webpack.HashedModuleIdsPlugin()
+    new webpack.HashedModuleIdsPlugin(),
   ]
 }
 

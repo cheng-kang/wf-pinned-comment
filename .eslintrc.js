@@ -1,5 +1,3 @@
-// http://eslint.org/docs/user-guide/configuring
-
 module.exports = {
   root: true,
   parser: 'babel-eslint',
@@ -9,14 +7,21 @@ module.exports = {
   env: {
     browser: true,
   },
-  // https://github.com/standard/standard/blob/master/docs/RULES-en.md
-  extends: 'standard',
+  extends: [
+    'airbnb-base',
+  ],
   // required to lint *.vue files
   plugins: [
     'html'
   ],
-  // add your custom rules here
   'rules': {
+    'import/extensions': 'off',
+    'import/no-unresolved': 'off',
+    'no-param-reassign': 'off',
+    'no-use-before-define': ['error', { 'functions': false, 'classes': true }],
+    'no-shadow': 'off',
+    'no-underscore-dangle': 'off',
+    'padded-blocks': 0,
     // allow paren-less arrow functions
     'arrow-parens': 0,
     // allow async-await

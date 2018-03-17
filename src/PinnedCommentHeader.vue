@@ -10,24 +10,24 @@
 export default {
   name: 'pinned-comment-header',
   props: ['bus'],
-  data () {
+  data() {
     return {
-      pinnedCommentId: null
-    }
+      pinnedCommentId: null,
+    };
   },
   computed: {
-    i18next () { return this.bus.i18next },
-    backgroundColor () { return this.bus.pluginOptions.WfPinnedComment.backgroundColor || 'rgba(0, 0, 0, 0.03)' }
+    i18next() { return this.bus.i18next; },
+    backgroundColor() { return this.bus.pluginOptions.WfPinnedComment.backgroundColor || 'rgba(0, 0, 0, 0.03)'; },
   },
-  created () {
+  created() {
     this.bus.listenTo('WfPinnedComment.pinnedCommentId', pinnedCommentId => {
-      this.pinnedCommentId = pinnedCommentId
-    }, this._uid)
+      this.pinnedCommentId = pinnedCommentId;
+    }, this._uid);
   },
-  beforeDestroy () {
-    this.bus.enough('WfPinnedComment.pinnedCommentId', null, this._uid)
-  }
-}
+  beforeDestroy() {
+    this.bus.enough('WfPinnedComment.pinnedCommentId', null, this._uid);
+  },
+};
 </script>
 <style scoped>
 .pinned-comment-header { display: flex; justify-content: flex-end; padding: 4px 0 0 0; height: 22px; width: 100%; color: #9ea7b4; font-size: 14px; font-weight: 500; }

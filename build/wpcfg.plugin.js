@@ -96,7 +96,7 @@ let webpackConfig = {
     }),
     new CopyWebpackPlugin([
       {
-        from: './meta.json',
+        from: './src/meta.json',
         to: './meta.json',
         transform (content, path) {
           const contentJSON = JSON.parse(content.toString())

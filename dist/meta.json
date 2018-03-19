@@ -1,6 +1,6 @@
 {
   "library": "WfPinnedComment",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "title": "title",
   "description": "description",
   "options": [
@@ -22,27 +22,15 @@
       "bg_color": "Background Color",
       "bg_color_placeholder": "e.g. #ffffff",
       "description": "A wildfire plugin that allows you to pin a comment at the top.\nClick here -> [Home Page](https://github.com/cheng-kang/wf-pinned-comment).",
-      "error": "Something went wrong.",
       "om_bg_color": "Background Color should be a valid hex",
-      "pin": "Pin",
-      "pinned_comment": "Pinned Comment",
-      "pin_success": "Pinned!",
-      "title": "Pinned Comment",
-      "unpin": "Unpin",
-      "unpin_success": "Unpinned!"
+      "title": "Pinned Comment"
     },
     "zh-CN": {
       "bg_color": "背景颜色",
       "bg_color_placeholder": "例：#ffffff",
       "description": "一个用于置顶评论的野火插件。点击进入[主页](https://github.com/cheng-kang/wf-pinned-comment)。",
-      "error": "置顶操作出错了。",
       "om_bg_color": "背景颜色应该为一个十六进制数",
-      "pin": "置顶",
-      "pinned_comment": "置顶评论",
-      "pin_success": "置顶成功！",
-      "title": "置顶评论",
-      "unpin": "取消置顶",
-      "unpin_success": "取消置顶成功！"
+      "title": "置顶评论"
     }
   }
 }

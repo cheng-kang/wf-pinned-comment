@@ -3,7 +3,7 @@
     <wf-comment-card
       v-if="comment"
       class="pinned-comment"
-      :style="{backgroundColor}"
+      :style="{ backgroundColor }"
       :key="comment.commentId"
       :comment="comment"/>
   </transition>
@@ -13,7 +13,11 @@ import { BACKGROUND_COLOR } from './constants';
 
 export default {
   name: 'pinned-comment',
-  props: ['bus', 't'],
+  props: [
+    'pluginData',
+    'db',
+    'config',
+  ],
   data() {
     return {
       comment: undefined,
@@ -23,26 +27,23 @@ export default {
   watch: {
     comment(newVal) {
       const newId = newVal ? newVal.commentId : null;
-      this.$set(this.bus.$data.plugins, 'WfPinnedComment', newId);
-      this.bus.$emit('WfPinnedComment.pinnedCommentId', newId);
+      this.$set(this.pluginData, 'pinnedCommentId', newId);
     },
   },
   created() {
-    const { pageURL } = this.bus.config;
-    this.bus.db.ref(`plugins/WfPinnedComment/a/x/x/x/u/${pageURL}`).on('value', (snap) => {
-      const commentId = snap.val();
+    this.db.ref(`plugins/WfPinnedComment/a/x/x/x/u/${this.config.pageURL}`).on('value', (snapshot) => {
+      const commentId = snapshot.val();
       if (!commentId) { this.comment = null; return; }
-      this.bus.db.ref(`comments/${commentId}`).once('value')
-        .then((snap) => {
-          const comment = snap.val();
+      this.db.ref(`comments/${commentId}`).once('value')
+        .then((snapshot) => {
+          const comment = snapshot.val();
           if (!comment) { this.comment = null; return; }
           this.comment = Object.assign({}, comment, { commentId, parentCommentId: null });
         });
     });
 
-    this.bus.db.ref('plugins/WfPinnedComment/a/x/x/x/u/options').on('value', (snap) => {
-      const options = snap.val() || {};
-      const { backgroundColor } = options;
+    this.db.ref('plugins/WfPinnedComment/a/x/x/x/u/options').on('value', (snapshot) => {
+      const { backgroundColor } = snapshot.val() || {};
       this.backgroundColor = backgroundColor ? `#${backgroundColor}` : BACKGROUND_COLOR;
     });
   },

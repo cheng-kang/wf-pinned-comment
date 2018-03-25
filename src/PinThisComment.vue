@@ -6,28 +6,25 @@
 <script>
 export default {
   name: 'pin-this-comment',
-  props: ['bus', 'comment'],
+  props: ['bus', 't', 'pluginData', 'comment'],
   data() {
     return {
       pinnedCommentId: undefined,
     };
   },
   computed: {
-    i18next() { return this.bus.i18next; },
     shouldRender() {
       const { user } = this.bus;
       return this.isPinnedCommentIdLoaded && user && user.isAdmin;
     },
     itemTitle() {
-      return this.i18next.t(this.isPinned ? 'WfPinnedComment.unpin' : 'WfPinnedComment.pin');
+      return this.t(this.isPinned ? 'unpin' : 'pin');
     },
     isPinned() {
-      return this.comment.commentId === (this.pinnedCommentId || this.bus.plugins.WfPinnedComment);
+      return this.comment.commentId === this.pinnedCommentId;
     },
     isPinnedCommentIdLoaded() {
-      return !(
-        this.pinnedCommentId === undefined
-        && this.bus.plugins.WfPinnedComment === undefined);
+      return !(this.pinnedCommentId === undefined);
     },
   },
   methods: {
@@ -35,13 +32,13 @@ export default {
       if (!this.isPinnedCommentIdLoaded) return;
 
       const { pageURL } = this.bus.config;
-      const successMsg = this.i18next.t(`WfPinnedComment.${this.isPinned ? 'unpin_success' : 'pin_success'}`);
+      const successMsg = this.t(this.isPinned ? 'unpin_success' : 'pin_success');
       this.bus.db.ref(`plugins/WfPinnedComment/a/x/x/x/u/${pageURL}`).set(this.isPinned ? null : this.comment.commentId)
         .then(() => {
           this.$Message.success(successMsg);
         })
         .catch(() => {
-          this.$Message.error(this.i18next.t('WfPinnedComment.error'));
+          this.$Message.error(this.t('error'));
         });
     },
   },

@@ -1,6 +1,6 @@
 {
   "name": "wf-pinned-comment",
-  "version": "0.0.8",
+  "version": "0.0.12",
   "description": "A wildfire plugin that allows you to pin a comment at the top.",
   "author": "Kang Cheng <me@chengkang.pw>",
   "files": [

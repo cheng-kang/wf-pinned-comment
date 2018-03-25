@@ -9,16 +9,16 @@
   </transition>
 </template>
 <script>
+import { BACKGROUND_COLOR } from './constants';
+
 export default {
   name: 'pinned-comment',
-  props: ['bus'],
+  props: ['bus', 't'],
   data() {
     return {
       comment: undefined,
+      backgroundColor: BACKGROUND_COLOR,
     };
-  },
-  computed: {
-    backgroundColor() { return this.bus.pluginOptions.WfPinnedComment.backgroundColor || 'rgba(0, 0, 0, 0.03)'; },
   },
   watch: {
     comment(newVal) {
@@ -29,15 +29,21 @@ export default {
   },
   created() {
     const { pageURL } = this.bus.config;
-    this.bus.db.ref(`plugins/WfPinnedComment/a/x/x/x/u/${pageURL}`).on('value', snap => {
+    this.bus.db.ref(`plugins/WfPinnedComment/a/x/x/x/u/${pageURL}`).on('value', (snap) => {
       const commentId = snap.val();
       if (!commentId) { this.comment = null; return; }
       this.bus.db.ref(`comments/${commentId}`).once('value')
-        .then(snap => {
+        .then((snap) => {
           const comment = snap.val();
           if (!comment) { this.comment = null; return; }
           this.comment = Object.assign({}, comment, { commentId, parentCommentId: null });
         });
+    });
+
+    this.bus.db.ref('plugins/WfPinnedComment/a/x/x/x/u/options').on('value', (snap) => {
+      const options = snap.val() || {};
+      const { backgroundColor } = options;
+      this.backgroundColor = backgroundColor ? `#${backgroundColor}` : BACKGROUND_COLOR;
     });
   },
 };

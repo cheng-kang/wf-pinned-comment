@@ -8,9 +8,9 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const env = config.env
-const PACKAGE_NAME = process.env.PACKAGE_NAME
+const PACKAGE_NAME = process.env.PACKAGE_NAME.toLowerCase()
 const PACKAGE_VERSION = process.env.PACKAGE_VERSION
-const LIBRARY_NAME = PACKAGE_NAME.toLowerCase().split('-').map(part => (part.charAt(0).toUpperCase() + part.slice(1))).reduce((acc, cur) => acc + cur, '')
+const LIBRARY_NAME = PACKAGE_NAME.split('-').map(part => (part.charAt(0).toUpperCase() + part.slice(1))).reduce((acc, cur) => acc + cur, '')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)

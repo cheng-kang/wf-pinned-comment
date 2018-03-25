@@ -15,6 +15,7 @@ module.exports = {
     'html'
   ],
   'rules': {
+    'import/prefer-default-export': 'off',
     'import/extensions': 'off',
     'import/no-unresolved': 'off',
     'no-param-reassign': 'off',

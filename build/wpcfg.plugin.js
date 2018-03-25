@@ -114,8 +114,8 @@ let webpackConfig = {
           beautify: false
         },
         compress: {
-          warnings: true,
-          drop_console: false
+          warnings: false,
+          drop_console: true
         },
         sourceMap: true
       }

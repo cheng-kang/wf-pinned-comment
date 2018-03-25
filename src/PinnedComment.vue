@@ -28,6 +28,7 @@ export default {
     comment(newVal) {
       const newId = newVal ? newVal.commentId : null;
       this.$set(this.pluginData, 'pinnedCommentId', newId);
+      this.$forceUpdate();
     },
   },
   created() {
